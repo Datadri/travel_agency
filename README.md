@@ -31,6 +31,19 @@ python project/main.py
 
 Enter your travel request when prompted; the tool will print a structured representation.
 
+## Running as a web service
+Install the extra dependencies and start the FastAPI server:
+```bash
+uvicorn api:app --host 0.0.0.0 --port 8000
+```
+Send POST requests to `/parse` with plain text and the service will return a `TravelRequest` JSON.
+
+To containerize the application:
+```bash
+docker build -t travel-parser .
+docker run -p 8000:8000 travel-parser
+```
+
 ## Project Structure
 ```
 project/
@@ -45,3 +58,13 @@ project/
 - Format/validate code with `python -m compileall -q project`.
 - Tests can be added under a `tests/` folder in the future.
 - Contributions and issues are welcome; please open a PR.
+
+## Publishing
+To make the repository available online, initialize Git and push to a remote:
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin <your-remote-url>
+git push -u origin main
+```
