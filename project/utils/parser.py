@@ -56,3 +56,4 @@ def parse_natural_input_to_travel_request(user_input: str) -> TravelRequest:
         return TravelRequest(**parsed_args)
     except ValidationError as e:
         raise ValueError(f"Error validando TravelRequest: {e}")
+
