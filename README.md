@@ -44,6 +44,21 @@ docker build -t travel-parser .
 docker run -p 8000:8000 travel-parser
 ```
 
+## Deploying to Heroku
+The repository includes a `Procfile` so it can be deployed directly using
+Heroku's Python buildpack. After installing the [Heroku CLI](https://devcenter.heroku.com/), run:
+
+```bash
+heroku login
+heroku create <app-name>
+heroku config:set OPENAI_API_KEY=your-api-key --app <app-name>
+git push heroku main
+```
+
+Heroku will install the requirements, launch the app with Uvicorn, and expose
+the `/parse` endpoint at `https://<app-name>.herokuapp.com/parse`.
+
+=======
 ## Project Structure
 ```
 project/
